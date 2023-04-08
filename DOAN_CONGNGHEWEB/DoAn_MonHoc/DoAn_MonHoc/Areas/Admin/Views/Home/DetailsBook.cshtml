@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "DetailsBook";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+@model DoAn_MonHoc.Models.THONGTINSACH
+
+<h2>@Model.TenSach</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+        <dt>
+            NXB
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+        </dd>
+        <dt>
+            Tác giả
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TACGIA.TenTG)
+        </dd>
+        <dt>
+            Thể loại
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LOAISACH.TenLoai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaSach)
+        </dt>
+        <dd>
+            <p><span>@(Model.GiaSach.HasValue ? Model.GiaSach.Value.ToString("N0") : "Liên hệ")</span> VND</p>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GiamGia)
+        </dt>
+        <dd>
+            <p><span>@(Model.GiaSach.HasValue ? Model.GiamGia.Value.ToString("N0") : "Liên hệ")</span> VND</p>
+        </dd>
+        <dt>
+            Sơ lược
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+        <dd>
+            <img src="/HinhAnhSach/@Model.HinhAnh" width="180" height="250" />
+        </dd>
+        <dt>
+            Số lượng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SLTon)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Trở về", "AD_ShowAllBook") |
+    @Html.ActionLink("Sửa", "UpdateBook", new { id = Model.MaSach })
+</p>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DoAn_MonHoc.Models.THONGTINSACH>
+<style>
+    .item_product_main .product-main-list-mini:hover {
+    box-shadow: 0 2px 2px #cecece;
+
+}
+
+</style>
+    <div class="owl_nav_custome1 related-product">
+        <div class="section_prd_feature">
+            <div class="heading">
+                <h2><a href="#" title="Sản phẩm liên quan">Sản phẩm liên quan</a></h2>
+            </div>
+@foreach (var item in Model)
+{
+            <div class="products product_related products-view-grid-bb">
+                <div class="item_product_main related-item">
+                    <div class="product-box product-item-list product-main-list-mini">
+                        <div class="product-image">
+                            <a class="img_thumb" href="/Book/ChiTietSach/@item.MaSach">
+                                <img class="small-image lazyload loaded" src="~/HinhAnhSach/@item.HinhAnh" alt="@item.HinhAnh" />
+                            </a>
+                        </div>
+                        <div class="product-shop">
+                            <h3 class="product-name"><a>@item.TenSach</a></h3>
+                            <div class="product-summary">
+                                <span class="text2line">
+                                    Mô tả đang cập nhật
+                                </span>
+                            </div>
+                            <div class="product-item-price price-box" style="float:left; width: 100%; text-align:center;">
+                                @if (@item.GiamGia <= 0)
+                                {
+                                    <span class="product-item-price-sale old-price">
+                                        <span class="compare-price price product-price-old" style="font-size: 20px; font-weight: 700; font-family:Roboto,HelveticaNeue,Helvetica Neue,sans-serif; color: #f26522; font-weight: 600; line-height: 20px; ">
+                                            @item.GiaSach.Value.ToString("N0") VND
+                                        </span>
+                                    </span>
+                                }
+                                else
+                                {
+
+                                    @Html.Action("giasachgiam", "Book", new { @masach = @item.MaSach })
+                                    <span class="product-item-price-sale old-price">
+                                        <span class="compare-price price product-price-old" style="color: #636363; text-decoration: line-through;">
+                                            @item.GiaSach.Value.ToString("N0") VND
+                                        </span>
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+        </div>
+
+    </div>
+
